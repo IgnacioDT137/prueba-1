@@ -19,4 +19,8 @@ export class PrincipalAlumnoPage implements OnInit {
   asistencias(){
   this.router.navigate(['/asistencias'])
   }
+
+  cerrarSesion() {
+    this.router.navigate(["/home"])
+  }
 }
