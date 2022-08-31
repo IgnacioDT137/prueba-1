@@ -1,9 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>Principal</ion-title>
+    <ion-title class="ion-text-center">
+      <img src="assets/logo.png" alt="logo" width="300">
+      <ion-icon name="person-circle-outline" id="icono"></ion-icon>
+      <ion-popover trigger="icono" triggerAction="click" dismiss-on-select="true">
+        <ng-template>
+          <ion-button color="danger" (click)="cerrarSesion()">Cerrar sesión</ion-button>
+        </ng-template>
+      </ion-popover>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
