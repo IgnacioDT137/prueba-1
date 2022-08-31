@@ -1,10 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <img src="assets/logo.png" alt="logo">
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
   <ion-grid>
-    <ion-row>
-      <ion-col class="ion-text-center">
-        <ion-title>Asistencias DuocUC</ion-title>
-      </ion-col>
-    </ion-row>
     <ion-row>
       <ion-col>
         <ion-card>
@@ -16,7 +19,7 @@
             <ion-label>Usuario</ion-label>
             <ion-input [(ngModel)]="userInput.username"></ion-input>
             <ion-label>Contraseña</ion-label>
-            <ion-input [(ngModel)]="userInput.pwd"></ion-input>
+            <ion-input [(ngModel)]="userInput.pwd" type="password"></ion-input>
             <ion-button color="warning" (click)="principalAlumno(userInput)">Iniciar Sesión</ion-button>
           </ion-card-content>
         </ion-card>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -11,11 +12,13 @@ export class HomePage {
   users: any[] = [
     {
       username: "fenix",
-      pwd: "duoc2022"
+      pwd: "duoc2022",
+      tipo: "alumno"
     },
     {
       username: "sebaBlanco",
-      pwd: "1234"
+      pwd: "1234",
+      tipo: "docente"
     }
   ]
 
@@ -24,7 +27,17 @@ export class HomePage {
     pwd: ""
   }
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private alertController: AlertController) {}
+
+  async loginError() {
+    const alert = await this.alertController.create({
+      header: 'Error al iniciar sesión',
+      message: 'Ingrese credenciales válidas',
+      buttons: ['Intentar nuevamente'],
+    });
+
+    await alert.present();
+  }
 
   principalAlumno(input) {
     let user = this.users.filter(u => u.username === input.username && u.pwd === input.pwd)
@@ -37,7 +50,11 @@ export class HomePage {
         }
       }
 
-      this.router.navigate(["/principal-alumno"], extras)
+      if (user[0].tipo === "alumno") {
+        this.router.navigate(["/principal-alumno"], extras)
+      } else {
+        this.router.navigate(["/principal-docente"], extras)
+      }
 
       this.userInput = {
         username: "",
@@ -45,7 +62,7 @@ export class HomePage {
       }
 
     } else {
-      console.log("Ingresa credenciales validas")
+      this.loginError()
     }
   }
 
