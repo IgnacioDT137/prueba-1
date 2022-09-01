@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { AnimationController } from "@ionic/angular";
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit{
 
   users: any[] = [
     {
@@ -15,11 +16,6 @@ export class HomePage {
       pwd: "duoc2022",
       tipo: "alumno"
     },
-    {
-      username: "sebaBlanco",
-      pwd: "1234",
-      tipo: "docente"
-    }
   ]
 
   userInput = {
@@ -27,20 +23,24 @@ export class HomePage {
     pwd: ""
   }
 
-  constructor(private router: Router, private alertController: AlertController) {}
+  constructor(private router: Router, private alertController: AlertController, private aniCtrl: AnimationController) {}
 
-  async loginError() {
-    const alert = await this.alertController.create({
-      header: 'Error al iniciar sesión',
-      message: 'Ingrese credenciales válidas',
-      buttons: ['Intentar nuevamente'],
-    });
-
-    await alert.present();
+  errorField() {
+      this.aniCtrl.create()
+      .addElement(document.querySelectorAll(".campo"))
+      .duration(100)
+      .iterations(3)
+      .fromTo("transform", "translateX(-5px)", "translateX(0px)")
+      .fromTo("border", "2px red solid", "1px rgb(104, 98, 98) solid")
+      .fromTo("background", "red", "transparent")
+      .play()
   }
 
   principalAlumno(input) {
+    
     let user = this.users.filter(u => u.username === input.username && u.pwd === input.pwd)
+
+    console.log(user);
 
     if (user[0]) {
 
@@ -62,8 +62,22 @@ export class HomePage {
       }
 
     } else {
-      this.loginError()
+      this.errorField()
     }
+  }
+
+  ngOnInit(): void {
+    this.aniCtrl.create()
+    .addElement(document.querySelector("#logo"))
+    .duration(3000)
+    .keyframes([
+      {offset: 0.01, transform: "scale(1)", opacity: 0},
+      {offset:0.25, transform: "scale(1)", opacity:0.25},
+      {offset: 0.5, transform: "scale(1)", opacity: 0.5},
+      {offset: 0.75, transform: "scale(1)", opacity: 0.75},
+      {offset: 1, transform: "scale(1)", opacity: 1}
+    ])
+    .play()
   }
 
 }

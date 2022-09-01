@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      <img src="assets/logo.png" alt="logo">
+      <img src="assets/logo.png" alt="logo" id="logo">
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -12,15 +12,22 @@
       <ion-col>
         <ion-card>
           <ion-card-header>
-            <ion-card-title>Asistencias DuocUC</ion-card-title>
+            <ion-card-title color="light">Asistencias DuocUC</ion-card-title>
           </ion-card-header>
         
           <ion-card-content>
-            <ion-label>Usuario</ion-label>
-            <ion-input [(ngModel)]="userInput.username"></ion-input>
-            <ion-label>Contraseña</ion-label>
-            <ion-input [(ngModel)]="userInput.pwd" type="password"></ion-input>
-            <ion-button color="warning" (click)="principalAlumno(userInput)">Iniciar Sesión</ion-button>
+            <mat-form-field appearance="fill" class="campo">
+              <mat-label>Usuario</mat-label>
+              <input matInput [(ngModel)]="this.userInput.username">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="campo">
+              <mat-label>Contraseña</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="this.userInput.pwd">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+            <div><button mat-raised-button (click)="principalAlumno(userInput)">Ingresar</button></div>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -31,6 +38,6 @@
 
 <ion-footer>
   <ion-toolbar class="ion-text-center">
-    <ion-text><small>DuocUC 2022 | Todos los derechos reservados</small></ion-text>
+    <ion-text class="footer-text"><small>DuocUC 2022 | Todos los derechos reservados</small></ion-text>
   </ion-toolbar>
 </ion-footer>

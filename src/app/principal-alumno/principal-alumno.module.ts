@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { PrincipalAlumnoPageRoutingModule } from './principal-alumno-routing.module';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
 
 import { PrincipalAlumnoPage } from './principal-alumno.page';
 
@@ -13,7 +15,9 @@ import { PrincipalAlumnoPage } from './principal-alumno.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    PrincipalAlumnoPageRoutingModule
+    PrincipalAlumnoPageRoutingModule,
+    MatMenuModule,
+    MatIconModule,
   ],
   declarations: [PrincipalAlumnoPage]
 })

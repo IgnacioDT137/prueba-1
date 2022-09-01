@@ -10,7 +10,8 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
-  },  {
+  },
+  {
     path: 'principal-alumno',
     loadChildren: () => import('./principal-alumno/principal-alumno.module').then( m => m.PrincipalAlumnoPageModule)
   },
@@ -18,19 +19,6 @@ const routes: Routes = [
     path: 'asistencias',
     loadChildren: () => import('./asistencias/asistencias.module').then( m => m.AsistenciasPageModule)
   },
-  {
-    path: 'principal-docente',
-    loadChildren: () => import('./principal-docente/principal-docente.module').then( m => m.PrincipalDocentePageModule)
-  },
-  {
-    path: 'asignaturas',
-    loadChildren: () => import('./asignaturas/asignaturas.module').then( m => m.AsignaturasPageModule)
-  },
-  {
-    path: 'qrcode',
-    loadChildren: () => import('./qrcode/qrcode.module').then( m => m.QrcodePageModule)
-  },
-
 ];
 
 @NgModule({

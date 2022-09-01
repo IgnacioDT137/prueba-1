@@ -24,3 +24,5 @@ export class PrincipalAlumnoPage implements OnInit {
     this.router.navigate(["/home"])
   }
 }
+export class MenuOverviewExample {}
+export class IconOverviewExample {}
