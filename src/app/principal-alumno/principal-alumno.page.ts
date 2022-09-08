@@ -23,6 +23,10 @@ export class PrincipalAlumnoPage implements OnInit {
   cerrarSesion() {
     this.router.navigate(["/home"])
   }
+
+  qrScanner() {
+    this.router.navigate(['/qrscanner'])
+  }
 }
 export class MenuOverviewExample {}
 export class IconOverviewExample {}

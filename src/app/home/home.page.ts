@@ -40,7 +40,6 @@ export class HomePage implements OnInit{
     
     let user = this.users.filter(u => u.username === input.username && u.pwd === input.pwd)
 
-    console.log(user);
 
     if (user[0]) {
 

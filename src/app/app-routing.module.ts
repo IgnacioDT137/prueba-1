@@ -18,7 +18,15 @@ const routes: Routes = [
   {
     path: 'asistencias',
     loadChildren: () => import('./asistencias/asistencias.module').then( m => m.AsistenciasPageModule)
+  },  {
+    path: 'qrscanner',
+    loadChildren: () => import('./qrscanner/qrscanner.module').then( m => m.QrscannerPageModule)
   },
+  {
+    path: 'constancia',
+    loadChildren: () => import('./constancia/constancia.module').then( m => m.ConstanciaPageModule)
+  },
+
 ];
 
 @NgModule({
