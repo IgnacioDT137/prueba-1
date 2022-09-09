@@ -27,6 +27,10 @@ export class PrincipalAlumnoPage implements OnInit {
   qrScanner() {
     this.router.navigate(['/qrscanner'])
   }
+
+  inasistencias() {
+    this.router.navigate(['/constancia'])
+  }
 }
 export class MenuOverviewExample {}
 export class IconOverviewExample {}
